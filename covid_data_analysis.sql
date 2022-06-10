@@ -88,7 +88,7 @@ rolling_people_vaccinated numeric
 
 insert into #PercentPopulationVaccinated
 select deaths.continent, deaths.location, deaths.date, deaths.population, vac.new_vaccinations,
-sum(convert(bigint,vac.new_vaccinations)) over (partition by dea.location order by dea.location, dea.date) as rolling_people_vaccinated
+sum(convert(bigint,vac.new_vaccinations)) over (partition by deaths.location order by deaths.location, deaths.date) as rolling_people_vaccinated
 from CovidAnalysis..['CovidDeaths'] deaths
 join CovidAnalysis..['CovidVaccinations'] vac
 	on deaths.location = vac.location
