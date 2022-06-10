@@ -10,7 +10,7 @@ where continent is not null
 order by 1,2;
 
 -- summarizing death percentage in the United States
-select location, date, total_cases,total_deaths, (total_deaths/total_cases)*100 as death_percentage
+select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 as death_percentage
 from CovidAnalysis..['CovidDeaths']
 where location like '%states%'
 and continent is not null 
@@ -63,8 +63,8 @@ order by 2,3;
 with PopvsVac (continent, location, date, population, new_vaccinations, rolling_people_vaccinated)
 as
 (
-select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations, 
-sum(convert(bigint,vac.new_vaccinations)) over (partition by deaths.location order by deaths.location, deaths.date) as rolling_people_vaccinated
+select deaths.continent, deaths.location, deaths.date, deaths.population, vac.new_vaccinations, 
+sum(convert(bigint, vac.new_vaccinations)) over (partition by deaths.location order by deaths.location, deaths.date) as rolling_people_vaccinated
 from CovidAnalysis..['CovidDeaths'] deaths
 join CovidAnalysis..['CovidVaccinations'] vac
 	on deaths.location = vac.location
@@ -88,7 +88,7 @@ rolling_people_vaccinated numeric
 
 insert into #PercentPopulationVaccinated
 select deaths.continent, deaths.location, deaths.date, deaths.population, vac.new_vaccinations,
-sum(convert(bigint,vac.new_vaccinations)) over (partition by deaths.location order by deaths.location, deaths.date) as rolling_people_vaccinated
+sum(convert(bigint, vac.new_vaccinations)) over (partition by deaths.location order by deaths.location, deaths.date) as rolling_people_vaccinated
 from CovidAnalysis..['CovidDeaths'] deaths
 join CovidAnalysis..['CovidVaccinations'] vac
 	on deaths.location = vac.location
@@ -102,7 +102,7 @@ go
 
 create view PercentPopulationVaccinated as
 select deaths.continent, deaths.location, deaths.date, deaths.population, vac.new_vaccinations, 
-sum(convert(bigint,vac.new_vaccinations)) over (partition by deaths.location order by deaths.location, deaths.date) as rolling_people_vaccinated
+sum(convert(bigint, vac.new_vaccinations)) over (partition by deaths.location order by deaths.location, deaths.date) as rolling_people_vaccinated
 from CovidAnalysis..['CovidDeaths'] deaths
 join CovidAnalysis..['CovidVaccinations'] vac
 	on deaths.location = vac.location
