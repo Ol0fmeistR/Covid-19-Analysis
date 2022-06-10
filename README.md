@@ -10,13 +10,13 @@ The tableau dashboard for the project can be found <a href="https://public.table
     <td>Infection Rate by Country</td>
   </tr>
   <tr>
-    <td valign="top"><img src="https://github.com/Ol0fmeistR/Covid-19-Analysis/blob/main/Images/Continent.png" height="250"></td>
-    <td valign="top"><img src="https://github.com/Ol0fmeistR/Covid-19-Analysis/blob/main/Images/PercentPop.png" width="1000" height="234"></td>
+    <td valign="top"><img src="https://github.com/Ol0fmeistR/Covid-19-Analysis/blob/main/visualizations/Continent.png" height="250"></td>
+    <td valign="top"><img src="https://github.com/Ol0fmeistR/Covid-19-Analysis/blob/main/visualizations/PercentPop.png" width="1000" height="234"></td>
   </tr>
   <tr>
     <td>Average Infection Rate by Country and Future Forecasts</td>
   </tr>
   <tr>
-    <td valign="top"><img src="https://github.com/Ol0fmeistR/Covid-19-Analysis/blob/main/Images/CountryStats.png" height="230"></td>
+    <td valign="top"><img src="https://github.com/Ol0fmeistR/Covid-19-Analysis/blob/main/visualizations/CountryStats.png" height="230"></td>
   </tr>
 </table>
